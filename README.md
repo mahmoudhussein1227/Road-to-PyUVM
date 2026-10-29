@@ -8,7 +8,7 @@ This repository contains hands-on code examples accompanying the **Road to PyUVM
 
 ## Topics Covered
 
-- **Python OOP** — Classes, inheritance, polymorphism, and other object-oriented concepts essential for UVM
+- **Python OOP** — Classes, inheritance and other object-oriented concepts essential for UVM
 - *More topics coming soon...*
 
 ## Follow the Series
