@@ -1,6 +1,6 @@
 # Road to PyUVM 🚀
 
-Code examples, notes, and resources for the **Road to PyUVM** series on LinkedIn.
+Code examples, notes, and resources for the **Road to PyUVM** series.
 
 ## About
 
