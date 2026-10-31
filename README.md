@@ -22,6 +22,12 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - Common pitfalls (mutable class attributes, namespace shadowing)
   - Relevance to PyUVM components and transactions
 
+- **Part 3: Constructors and `__str__`** — [`Python OOP/03_constructors_and_str.md`](Python%20OOP/03_constructors_and_str.md)
+  - The constructor (`__init__`) and parameter defaults
+  - Dunder methods overview
+  - String representation (`__str__` vs. `__repr__`)
+  - Common pitfalls and PyUVM verification relevance
+
 *More topics coming soon...*
 
 ## Follow the Series
