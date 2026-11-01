@@ -28,6 +28,12 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - String representation (`__str__` vs. `__repr__`)
   - Common pitfalls and PyUVM verification relevance
 
+- **Part 4: User-Defined Methods** — [`Python OOP/04_user_defined_methods.md`](Python%20OOP/04_user_defined_methods.md)
+  - Method definition and the `self` rule
+  - Parameters, return values, and mutating state
+  - Calling methods from other methods (`self.method()`)
+  - Methods vs. functions and PyUVM verification relevance
+
 *More topics coming soon...*
 
 ## Follow the Series
