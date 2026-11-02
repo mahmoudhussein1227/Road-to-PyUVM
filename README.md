@@ -34,6 +34,13 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - Calling methods from other methods (`self.method()`)
   - Methods vs. functions and PyUVM verification relevance
 
+- **Part 5: Accessing Class Members** — [`Python OOP/05_accessing_class_members.md`](Python%20OOP/05_accessing_class_members.md)
+  - The dot operator for attributes and methods
+  - Dynamic access (`getattr`, `setattr`, `hasattr`, `delattr`)
+  - Inspecting objects (`dir()`, `__dict__`)
+  - Python encapsulation: conventions, `_single_underscore`, and `__name_mangling`
+  - PyUVM relevance (component hierarchies, logging, transaction fields)
+
 *More topics coming soon...*
 
 ## Follow the Series
