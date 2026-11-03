@@ -41,6 +41,13 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - Python encapsulation: conventions, `_single_underscore`, and `__name_mangling`
   - PyUVM relevance (component hierarchies, logging, transaction fields)
 
+- **Part 6: Inheritance** — [`Python OOP/06_inheritance.md`](Python%20OOP/06_inheritance.md)
+  - Parent and child classes ("is-a" relationship)
+  - Extending constructors with `super().__init__()`
+  - Method overriding and extending parent methods
+  - Relationship checks (`isinstance`, `issubclass`) and MRO
+  - Multiple inheritance and PyUVM base class architecture
+
 *More topics coming soon...*
 
 ## Follow the Series
