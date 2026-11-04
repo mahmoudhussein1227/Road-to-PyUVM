@@ -10,6 +10,7 @@ The Python OOP section is done, so we move to the second block of the roadmap: *
 4. [What a cocotb testbench looks like](#4-what-a-cocotb-testbench-looks-like)
 5. [The Makefile that configures the simulator](#5-the-makefile-that-configures-the-simulator)
 6. [Why this matters for PyUVM](#6-why-this-matters-for-pyuvm)
+7. [Installation recommendations](#7-installation-recommendations)
 
 ---
 
@@ -199,5 +200,33 @@ cocotb also offers a pure-Python way to build and run simulations (the "Python r
 
 ---
 
+## 7. Installation recommendations
+
+There are several ways to install and set up cocotb depending on your operating system (Linux, macOS, Windows) and workflow preferences (native, virtual environments, Docker, or WSL). We recommend searching and picking the setup that best suits your OS and simulator setup.
+
+### Recommended for Windows users: Miniconda / Conda
+
+On Windows, managing compilers, C/C++ toolchains, Python versions, and Make can sometimes run into environment conflicts. A clean, reliable approach is to use **[Miniconda](https://docs.conda.io/en/latest/miniconda.html)**:
+
+1. **Install Miniconda** on Windows.
+2. **Create a dedicated environment** (e.g., Python 3.10 or 3.11):
+   ```bash
+   conda create -n cocotb_env python=3.11 -y
+   conda activate cocotb_env
+   ```
+3. **Install cocotb** inside that environment:
+   ```bash
+   pip install cocotb
+   ```
+4. **Verify the installation**:
+   ```bash
+   cocotb-config --version
+   ```
+
+> **Note:** Many other installation methods exist (e.g., standard Python `venv`, WSL2 / Ubuntu on Windows, MSYS2, native Linux packages). Search the [official cocotb documentation](https://docs.cocotb.org/) and select the method that works best for your OS and installed simulator!
+
+---
+
 **Next up:** Part 8, Coroutines and `@cocotb.test()`.
+
 
