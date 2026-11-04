@@ -48,6 +48,15 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - Relationship checks (`isinstance`, `issubclass`) and MRO
   - Multiple inheritance and PyUVM base class architecture
 
+### ⚡ cocotb
+
+- **Part 1: Meet cocotb** — [`cocotb/01_cocotb_intro.md`](cocotb/01_cocotb_intro.md)
+  - What is cocotb and cosimulation
+  - Simulator support & VPI interface
+  - Cocotb testbench anatomy
+  - Simulator configuration via Makefile
+  - PyUVM connection & significance
+
 *More topics coming soon...*
 
 ## Follow the Series
