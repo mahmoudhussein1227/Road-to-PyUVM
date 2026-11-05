@@ -57,6 +57,13 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - Simulator configuration via Makefile
   - PyUVM connection & significance
 
+- **Part 2: Coroutines and `@cocotb.test()`** — [`cocotb/02_coroutines_and_cocotb_test.md`](cocotb/02_coroutines_and_cocotb_test.md)
+  - What are coroutines (`async def`, `await`) and concurrency
+  - Why hardware verification needs coroutines
+  - Decorators overview and `@cocotb.test()`
+  - Full "Hello, world" test example & test options
+  - Common pitfalls and PyUVM relevance
+
 *More topics coming soon...*
 
 ## Follow the Series
