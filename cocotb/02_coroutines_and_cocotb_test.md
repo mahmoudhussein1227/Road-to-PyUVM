@@ -243,7 +243,7 @@ What each part does:
 ### `Makefile`
 
 ```make
-SIM ?= icarus
+SIM ?= questa
 TOPLEVEL_LANG ?= verilog
 
 VERILOG_SOURCES += $(PWD)/my_design.v
