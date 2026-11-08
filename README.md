@@ -64,6 +64,13 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - Full "Hello, world" test example & test options
   - Common pitfalls and PyUVM relevance
 
+- **Part 3: Triggers and `await`** — [`cocotb/09_triggers.md`](cocotb/09_triggers.md)
+  - Coroutines vs. Triggers (awaitable types)
+  - What happens when you await a trigger
+  - Common triggers (`Timer`, `RisingEdge`, `FallingEdge`, `Edge`, etc.)
+  - Triggers vs. SystemVerilog timing events
+  - Timing nuances, common pitfalls, and PyUVM significance
+
 *More topics coming soon...*
 
 ## Follow the Series
