@@ -1,4 +1,4 @@
-# Road to PyUVM, Part 9: Triggers and `await`
+# Road to PyUVM, cocotb Part 3: Triggers and `await`
 
 In Part 8 we saw that a coroutine can pause with `await`, and that awaiting another coroutine runs it to completion and gives back its return value. This part covers the **second kind of awaitable object**: the **trigger**. Triggers are how your Python test waits for things to happen in the simulation: time passing, a clock edge, a signal change.
 
