@@ -71,6 +71,13 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - Triggers vs. SystemVerilog timing events
   - Timing nuances, common pitfalls, and PyUVM significance
 
+- **Part 4: Accessing DUT Signals with `.value`** — [`cocotb/10_accessing_dut_signals.md`](cocotb/10_accessing_dut_signals.md)
+  - The `dut` object and signal handles vs. values
+  - Reading signals and four-state types (`LogicArray`, conversions)
+  - Writing signals and scheduled update timing
+  - Full driving and sampling example
+  - Common pitfalls and PyUVM driver/monitor relevance
+
 *More topics coming soon...*
 
 ## Follow the Series
