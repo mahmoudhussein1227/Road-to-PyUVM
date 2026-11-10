@@ -156,10 +156,12 @@ If any task raises an exception, `gather` re-raises that exception.
 
 ## 6. Racing tasks with `select`
 
-When you want to run multiple operations concurrently and proceed as soon as the **first one completes** (equivalent to SystemVerilog `fork ... join_any`), use `cocotb.triggers.select`.
+When you want to run multiple operations concurrently and proceed as soon as the **first one completes**, use `cocotb.triggers.select`.
 
 ### What it does:
-Races multiple awaitables/tasks against each other and wakes up as soon as any one completes.
+Races multiple awaitables/tasks against each other and wakes up as soon as the first one completes. 
+
+> **Important:** Once the winning trigger/task finishes, `select` automatically **cancels all remaining unfinished tasks/triggers** participating in that race, ensuring no orphaned background processes keep running.
 
 ### Inputs & Outputs:
 - **Inputs**: Multiple awaitable objects or tasks: `select(task1, task2, ...)`.
@@ -169,7 +171,7 @@ Races multiple awaitables/tasks against each other and wakes up as soon as any o
   - `task`: the task object that finished first.
 
 ### Common pattern: operation with timeout
-A classic verification requirement is guarding against a DUT lockup using a watchdog timer:
+A classic verification requirement is guarding against a DUT lockup using a watchdog timer. Notice that because `select` cancels unfinished tasks automatically when one finishes, you don't need to manually cancel the remaining task:
 
 ```python
 from cocotb.triggers import select, Timer, RisingEdge
@@ -185,14 +187,11 @@ async def test_timeout(dut):
     timeout = Timer(100, "ns")
 
     # Race DUT response against watchdog timer
+    # The loser is automatically cancelled!
     res, idx, win_task = await select(done_task, timeout)
 
-    if idx == 1:
-        # Timeout won the race! Cancel the pending worker and fail
-        done_task.cancel()
-        assert False, "Test timed out waiting for dut.done!"
-    else:
-        dut._log.info("Operation completed successfully!")
+    assert idx == 0, "Test timed out waiting for dut.done!"
+    dut._log.info("Operation completed successfully!")
 ```
 
 ---
