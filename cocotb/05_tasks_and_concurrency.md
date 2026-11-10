@@ -88,8 +88,8 @@ if task.done():
     val = task.result()
 ```
 
-### Cancelling a task: `.kill()`
-Background workers (like clock generators or continuous bus monitors) often loop forever (`while True`). When your test finishes, you can cancel them cleanly using `.kill()`:
+### Cancelling a task: `.cancel()`
+Background workers (like clock generators or continuous bus monitors) often loop forever (`while True`). When your test finishes, you can cancel them cleanly using `.cancel()`:
 
 ```python
 task = cocotb.start_soon(background_monitor(dut))
@@ -98,10 +98,10 @@ task = cocotb.start_soon(background_monitor(dut))
 await run_traffic(dut)
 
 # Terminate background task
-task.kill()
+task.cancel()
 ```
 
-When `.kill()` is called on a task, it is immediately stopped and removed from the cocotb scheduler.
+When `.cancel()` is called on a task, it is immediately stopped and removed from the cocotb scheduler.
 
 ---
 
@@ -113,7 +113,7 @@ If you come from SystemVerilog, cocotb tasks map directly to dynamic processes (
 |---|---|---|
 | Spawn background process | `fork begin ... end join_none` | `task = cocotb.start_soon(...)` |
 | Wait for process to finish | `wait fork;` or `process.await()` | `await task` |
-| Terminate process | `disable fork;` or `process.kill()` | `task.kill()` |
+| Terminate process | `disable fork;` or `process.kill()` | `task.cancel()` |
 | Join all parallel branches | `fork ... join` | `await gather(*tasks)` |
 | Join first completing branch | `fork ... join_any` | `await select(*tasks)` |
 
@@ -189,7 +189,7 @@ async def test_timeout(dut):
 
     if idx == 1:
         # Timeout won the race! Cancel the pending worker and fail
-        done_task.kill()
+        done_task.cancel()
         assert False, "Test timed out waiting for dut.done!"
     else:
         dut._log.info("Operation completed successfully!")
@@ -241,7 +241,7 @@ async def test_tasks_demo(dut):
     assert idx == 0, "Counter stalled!"
 
     # 5. Clean up background monitor
-    mon_task.kill()
+    mon_task.cancel()
     dut._log.info(f"Monitor collected {len(samples)} samples: {samples}")
 ```
 
@@ -257,4 +257,4 @@ Tasks and concurrency are the operational backbone of UVM:
 
 ---
 
-**Next up:** cocotb Part 6, Writing Assertions and Building Checks.
+**Next up:** cocotb Part 6, assert
