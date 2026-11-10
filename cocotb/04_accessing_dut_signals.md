@@ -1,6 +1,6 @@
 # Road to PyUVM, cocotb Part 4: Accessing DUT Signals with `.value`
 
-In Part 9 we learned how a test waits for the simulation. Now we need the other half of a testbench: **driving the design's inputs and reading its outputs**. In cocotb, every signal is reached through the `dut` object, and its value is read and written through a single property: **`.value`**.
+In cocotb Part 3 we learned how a test waits for the simulation. Now we need the other half of a testbench: **driving the design's inputs and reading its outputs**. In cocotb, every signal is reached through the `dut` object, and its value is read and written through a single property: **`.value`**.
 
 **Topics covered**
 
@@ -17,7 +17,7 @@ In Part 9 we learned how a test waits for the simulation. Now we need the other 
 
 ## 1. The `dut` object and signal handles
 
-Every cocotb test receives one argument, `dut` (Part 8). It is a **handle to the toplevel module** of your design. Each port, signal, and submodule inside it is reachable through the **dot operator**, exactly like the attribute access from Part 5:
+Every cocotb test receives one argument, `dut` (cocotb Part 2). It is a **handle to the toplevel module** of your design. Each port, signal, and submodule inside it is reachable through the **dot operator**, exactly like the attribute access from Python OOP Part 5:
 
 ```python
 dut.clk          # handle to the clk signal
@@ -29,7 +29,7 @@ A **handle** is a Python object that *refers to* an object inside the simulator.
 
 The names must match the **HDL names exactly**, including capitalization. If the design has `output reg [3:0] count`, then `dut.count` is the handle.
 
-Handles are what you pass to triggers, as we did in Part 9:
+Handles are what you pass to triggers, as we did in cocotb Part 3:
 
 ```python
 await RisingEdge(dut.clk)      # the trigger takes a handle
@@ -175,7 +175,7 @@ Use it sparingly. The default scheduled behavior is what makes testbench timing 
 
 ## 6. Full example
 
-We reuse the 4-bit counter from Part 8 (`my_design.v` with `clk`, `rst`, and `count`) and the same Makefile, with the test module renamed:
+We reuse the 4-bit counter from cocotb Part 2 (`my_design.v` with `clk`, `rst`, and `count`) and the same Makefile, with the test module renamed:
 
 ```make
 COCOTB_TEST_MODULES = test_signals
@@ -222,7 +222,7 @@ async def signals_demo(dut):
 What to look at:
 
 - `dut.rst.value = 1` is a **write**, `dut.count.value` is a **read**.
-- The test samples on the **falling edge**, as in Part 9, so the counter's registered output has settled.
+- The test samples on the **falling edge**, as in cocotb Part 3, so the counter's registered output has settled.
 - `to_unsigned()` turns the four-state `LogicArray` into a plain Python `int` that we can do arithmetic on.
 - The counter is 4 bits wide, so we compare against `(first + 1) % 16` to handle the wrap-around from 15 to 0.
 - The `assert` simply fails the test if the counter does not advance by one. We cover assertions properly in a later part.
@@ -253,7 +253,7 @@ Wait on a trigger first, or use `Immediate` if you truly need it.
 
 ### Pitfall 3: reading right after a clock edge
 
-As in Part 9, registered outputs may still show their pre-edge values right after `await RisingEdge`. Sample on the falling edge or after `ReadOnly()`.
+As in cocotb Part 3, registered outputs may still show their pre-edge values right after `await RisingEdge`. Sample on the falling edge or after `ReadOnly()`.
 
 ### Pitfall 4: converting `X` or `Z` to a number
 
@@ -279,7 +279,7 @@ Writing to an output, or to a wire driven inside the design, competes with the d
 
 ### Pitfall 8: writing after `ReadOnly()`
 
-As in Part 9, writes are not allowed after `await ReadOnly()` in the same time step. Move on to a later time step first.
+As in cocotb Part 3, writes are not allowed after `await ReadOnly()` in the same time step. Move on to a later time step first.
 
 ### Pitfall 9: mixing old and new API names
 
@@ -296,4 +296,4 @@ As in Part 9, writes are not allowed after `await ReadOnly()` in the same time s
 
 ---
 
-**Next up:** Part 11, Running coroutines concurrently with `cocotb.start_soon()`, `Combine`, and `First`.
+**Next up:** cocotb Part 5, Tasks, Concurrency, `gather`, and `select`.

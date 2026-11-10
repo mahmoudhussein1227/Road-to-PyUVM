@@ -1,6 +1,6 @@
 # Road to PyUVM, cocotb Part 3: Triggers and `await`
 
-In Part 8 we saw that a coroutine can pause with `await`, and that awaiting another coroutine runs it to completion and gives back its return value. This part covers the **second kind of awaitable object**: the **trigger**. Triggers are how your Python test waits for things to happen in the simulation: time passing, a clock edge, a signal change.
+In cocotb Part 2 we saw that a coroutine can pause with `await`, and that awaiting another coroutine runs it to completion and gives back its return value. This part covers the **second kind of awaitable object**: the **trigger**. Triggers are how your Python test waits for things to happen in the simulation: time passing, a clock edge, a signal change.
 
 **Topics covered**
 
@@ -41,7 +41,7 @@ When a coroutine awaits a trigger:
 - The coroutine **yields control**, either back to the **simulator** (so simulation time can advance) or to **another coroutine** that is ready to run.
 - When the event occurs, the simulator tells cocotb, and cocotb **resumes** the coroutine on the next line.
 
-"Blocking" here describes the coroutine only. The simulator is not blocked: it keeps running, and other coroutines keep making progress. This is the difference from `time.sleep()`, which would freeze the whole simulation (Part 8, pitfall 3).
+"Blocking" here describes the coroutine only. The simulator is not blocked: it keeps running, and other coroutines keep making progress. This is the difference from `time.sleep()`, which would freeze the whole simulation (cocotb Part 2, pitfall 3).
 
 ---
 
@@ -56,7 +56,7 @@ await RisingEdge(dut.clk)
 Step by step:
 
 1. `RisingEdge(dut.clk)` creates a trigger object for "a 0-to-1 change on `dut.clk`".
-2. `await` hands the trigger to cocotb, which **registers a callback** with the simulator through VPI (Part 7): "call me when `clk` rises".
+2. `await` hands the trigger to cocotb, which **registers a callback** with the simulator through VPI (cocotb Part 1): "call me when `clk` rises".
 3. The coroutine is **paused**. Control goes back to the simulator, or to any other coroutine that is ready to run.
 4. The simulation continues. Eventually `clk` goes from 0 to 1.
 5. The simulator calls the callback, cocotb **resumes** your coroutine, and the next line runs.
@@ -69,7 +69,7 @@ Step by step:
  simulator + any other coroutines :  time advances ... clk goes 0 -> 1
 ```
 
-Remember from Part 8: the code between two `await` lines runs in **zero simulation time**. Time only moves forward while coroutines are paused on triggers.
+Remember from cocotb Part 2: the code between two `await` lines runs in **zero simulation time**. Time only moves forward while coroutines are paused on triggers.
 
 ---
 
@@ -140,7 +140,7 @@ Triggers such as `Combine` and `First` let you wait on several things at once, s
 
 ## 5. Full example
 
-We reuse the design from Part 8: a 4-bit counter with a clock, a synchronous reset, and a `count` output.
+We reuse the design from cocotb Part 2: a 4-bit counter with a clock, a synchronous reset, and a `count` output.
 
 ```
 triggers_demo/
@@ -149,7 +149,7 @@ triggers_demo/
 └── test_triggers.py
 ```
 
-`my_design.v` and the `Makefile` are the same as in Part 8, except the test module is `test_triggers`:
+`my_design.v` and the `Makefile` are the same as in cocotb Part 2, except the test module is `test_triggers`:
 
 ```make
 COCOTB_TEST_MODULES = test_triggers
@@ -295,4 +295,4 @@ Waiting zero time can behave inconsistently across simulators. Use `await NextTi
 
 ---
 
-**Next up:** Part 10, Accessing DUT signals.
+**Next up:** cocotb Part 4, Accessing DUT signals.

@@ -227,6 +227,6 @@ On Windows, managing compilers, C/C++ toolchains, Python versions, and Make can 
 
 ---
 
-**Next up:** Part 8, Coroutines and `@cocotb.test()`.
+**Next up:** cocotb Part 2, Coroutines and `@cocotb.test()`.
 
 

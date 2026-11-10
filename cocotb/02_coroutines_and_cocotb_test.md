@@ -1,6 +1,6 @@
 # Road to PyUVM, cocotb Part 2: Coroutines and `@cocotb.test()`
 
-In Part 7 we saw that cocotb runs Python inside the simulator. This part covers the two ideas every cocotb test is built on: **coroutines**, which let a Python function pause and resume, and the **`@cocotb.test()` decorator**, which tells cocotb which functions are tests. We finish with a complete "Hello, world" test.
+In cocotb Part 1 we saw that cocotb runs Python inside the simulator. This part covers the two ideas every cocotb test is built on: **coroutines**, which let a Python function pause and resume, and the **`@cocotb.test()` decorator**, which tells cocotb which functions are tests. We finish with a complete "Hello, world" test.
 
 **Topics covered**
 
@@ -169,7 +169,7 @@ The simulator knows nothing about your Python function, and cocotb can't guess w
 
 ### What happens when the simulation starts
 
-1. The Makefile starts the simulator and loads cocotb (Part 7).
+1. The Makefile starts the simulator and loads cocotb (cocotb Part 1).
 2. cocotb imports the Python modules listed in `COCOTB_TEST_MODULES`.
 3. Importing the module executes each `@cocotb.test()` decorator, which **registers** the decorated functions as tests.
 4. cocotb runs the registered tests one after another (by default, in the order they are defined in the file), executing each test's body.
@@ -180,7 +180,7 @@ So you never call your tests yourself. You decorate a function, and cocotb finds
 ### The rules
 
 - The function must be **`async def`**, because a test must be able to pause on triggers.
-- It takes one argument, conventionally named **`dut`**: a handle to the toplevel design. Signals are reached with the dot operator, like `dut.clk` (Part 5).
+- It takes one argument, conventionally named **`dut`**: a handle to the toplevel design. Signals are reached with the dot operator, like `dut.clk` (Python OOP Part 5).
 - Use the decorator **with parentheses**: `@cocotb.test()`.
 - A test **passes** if it finishes without raising an exception, and **fails** if an exception is raised, such as a failed `assert`. (Assertions are covered later in the series.)
 
@@ -364,5 +364,5 @@ await my_helper(dut)         # runs it
 
 ---
 
-**Next up:** Part 9, Triggers.
+**Next up:** cocotb Part 3, Triggers.
 

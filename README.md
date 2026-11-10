@@ -64,19 +64,27 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - Full "Hello, world" test example & test options
   - Common pitfalls and PyUVM relevance
 
-- **Part 3: Triggers and `await`** — [`cocotb/09_triggers.md`](cocotb/09_triggers.md)
+- **Part 3: Triggers and `await`** — [`cocotb/03_triggers.md`](cocotb/03_triggers.md)
   - Coroutines vs. Triggers (awaitable types)
   - What happens when you await a trigger
   - Common triggers (`Timer`, `RisingEdge`, `FallingEdge`, `Edge`, etc.)
   - Triggers vs. SystemVerilog timing events
   - Timing nuances, common pitfalls, and PyUVM significance
 
-- **Part 4: Accessing DUT Signals with `.value`** — [`cocotb/10_accessing_dut_signals.md`](cocotb/10_accessing_dut_signals.md)
+- **Part 4: Accessing DUT Signals with `.value`** — [`cocotb/04_accessing_dut_signals.md`](cocotb/04_accessing_dut_signals.md)
   - The `dut` object and signal handles vs. values
   - Reading signals and four-state types (`LogicArray`, conversions)
   - Writing signals and scheduled update timing
   - Full driving and sampling example
   - Common pitfalls and PyUVM driver/monitor relevance
+
+- **Part 5: Tasks, Concurrency, `gather`, and `select`** — [`cocotb/05_tasks_and_concurrency.md`](cocotb/05_tasks_and_concurrency.md)
+  - Tasks as independent parallel processes
+  - Spawning background tasks with `cocotb.start_soon()`
+  - Task handles, awaiting, status checks, and `.kill()`
+  - SystemVerilog `fork / join` mapping
+  - Synchronizing with `gather` and racing with `select`
+  - PyUVM component `run_phase` architecture
 
 *More topics coming soon...*
 
