@@ -81,10 +81,18 @@ This repository contains comprehensive notes and hands-on code examples accompan
 - **Part 5: Tasks, Concurrency, `gather`, and `select`** — [`cocotb/05_tasks_and_concurrency.md`](cocotb/05_tasks_and_concurrency.md)
   - Tasks as independent parallel processes
   - Spawning background tasks with `cocotb.start_soon()`
-  - Task handles, awaiting, status checks, and `.kill()`
+  - Task handles, awaiting, status checks, and `.cancel()`
   - SystemVerilog `fork / join` mapping
   - Synchronizing with `gather` and racing with `select`
   - PyUVM component `run_phase` architecture
+
+- **Part 6: Checks with `assert` and Inter-Task Communication with `Queue`** — [`cocotb/06_assert_and_queue.md`](cocotb/06_assert_and_queue.md)
+  - How cocotb tests pass or fail
+  - The `assert` statement and descriptive failure messages
+  - Safe inter-task communication vs. polling plain lists
+  - Asynchronous FIFO queue (`cocotb.queue.Queue`)
+  - Producer-consumer pattern with scoreboard verification
+  - Foundation for PyUVM TLM FIFOs and analysis ports
 
 *More topics coming soon...*
 

@@ -256,4 +256,4 @@ Tasks and concurrency are the operational backbone of UVM:
 
 ---
 
-**Next up:** cocotb Part 6, assert
+**Next up:** cocotb Part 6, Checks with `assert` and Inter-Task Communication with `Queue`.
