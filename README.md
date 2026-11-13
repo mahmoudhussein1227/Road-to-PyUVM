@@ -94,6 +94,15 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - Producer-consumer pattern with scoreboard verification
   - Foundation for PyUVM TLM FIFOs and analysis ports
 
+### 🏗️ PyUVM
+
+- **Part 1: Brief Introduction to PyUVM** — [`pyuvm/01_pyuvm_intro.md`](pyuvm/01_pyuvm_intro.md)
+  - What is PyUVM and how it builds on cocotb
+  - Core UVM concepts retained (Component tree, Factory, ConfigDB, Phasing)
+  - Key differences from SystemVerilog UVM (no macros, simplified TLM, analysis implementations)
+  - Series scope: Focusing on PyUVM vs. SV differences
+  - Minimal PyUVM "Hello World" anatomy
+
 *More topics coming soon...*
 
 ## Follow the Series
