@@ -103,6 +103,13 @@ This repository contains comprehensive notes and hands-on code examples accompan
   - Series scope: Focusing on PyUVM vs. SV differences
   - Minimal PyUVM "Hello World" anatomy
 
+- **Part 2: UVM Phases and Phasing Execution** — [`pyuvm/02_uvm_phases.md`](pyuvm/02_uvm_phases.md)
+  - Phases as methods on `uvm_component`
+  - Non-time-consuming (`def`) vs. time-consuming (`async def`) phases
+  - Initiating phasing via `await uvm_root().run_test("test_name")`
+  - Removal of the `uvm_phase phase` argument
+  - Real-world APB environment examples (`connect_phase` and `run_phase`)
+
 *More topics coming soon...*
 
 ## Follow the Series
